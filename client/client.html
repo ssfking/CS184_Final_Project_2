@@ -1,0 +1,83 @@
+<head>
+  <meta charset="utf-8">
+  <title>Bootstrap, from Twitter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Le styles -->
+  <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+  <style type="text/css">
+    body {
+      padding-top: 60px;
+      padding-bottom: 40px;
+    }
+  </style>
+  <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+</head>
+<body>
+  {{renderPage}}
+  <!-- Le javascript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="http://code.jquery.com/jquery.js"></script>  
+  <script src="bootstrap/js/bootstrap.js"></script>
+</body>
+
+<template name="home">
+{{loginButtons}}
+  <h1>This is the example!</h1>
+  <a href="/welcome" class="welcome">Click here to go to your personalized welcome page</a>
+</template>
+
+<template name="sign_in">
+  <h4>Please Sign in!</h4>
+  {{loginButtons}}
+<!--
+  <form>
+    <input name="username" placeholder="Please enter your name" autofocus="autofocus"/>
+    <button type="submit">Signin</button>
+  </form>
+-->
+</template>
+
+<template name="post">
+  <h1>Post</h1>
+  <h2>You are viewing the post: {{id}}</h2>
+  <p>Try the browser's Back button!</p>
+</template>
+
+<template name="welcome">
+
+  {{loginButtons}}
+  <h1>Welcome {{username}}!</h1>
+  <form>
+    <label for="post_name">Add service:</label>
+    <input name="post_name" id="post_name" placeholder="Please enter a service name" autofocus="autofocus"/>
+
+    <label for="fee">Add fee:</label>
+    <input name="fee" id="fee" placeholder="Please enter the corresponding fee"/>
+
+    <button type="submit">Create</button>
+  </form>
+  <a href="" class="logout">Signout</a>
+  <a href="/" class="home">Return home</a>
+</template>
+
+<template name="rateCard">
+  {{loginButtons}}<br/>
+  Enter new rate card item:<br/>
+  Service: <input id="service" type="text" name="service"/><br>
+  Rate: <input id="rate" type="text" name="rate"/><br/>
+  <button id="submit">Submit </button>
+  <br/>
+  <ul class="rates_list">
+  {{#each rates}}
+    <li>
+      UserId: {{this.userId}};
+      Service: {{this.service}};
+      Rate: {{this.rate}}
+    </li>
+  {{/each}}
+  </ul>
+</template>
